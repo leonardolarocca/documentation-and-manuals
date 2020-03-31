@@ -7,3 +7,4 @@ Devo dar todos os créditos a [rocketseat](http://github.com/rocketseat) :purple
 ## Introdução
 
 1.  [Criando o ambiente de desenvolvimento](ambiente-desenvolvimento.md)
+2.  [Automatizando a ordenação de imports](automatizando-a-ordenacao-de-imports.md)
