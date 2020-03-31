@@ -1,4 +1,4 @@
-# Configurando o ambiente de desenvolvimento
+# Configurando o ambiente de desenvolvimento typescript
 
 Para iniciar o setup do ambiente de desenvolvimento `TypeScript`, serão adicionados alguns pacotes, você pode usar o gerenciador de pacotes de sua preferência, estarei usando o `yarn`.
 
@@ -6,11 +6,13 @@ No diretório do seu projeto inicie com:
 
     yarn init -y
 
-Adicione os seguintes pacotes como dependência de desenvolvimento, copie e cole em seu terminal:
+Copie e cole em seu terminal para adicionar os pacotes necessários para linting e transpilação do `TypeScript`:
 
     yarn add -D typescript ts-node-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin prettier eslint-config-prettier eslint-plugin-prettier
 
 A instalação desses pacotes fornecerá toda a estrutura para que o projeto possa ser transpilado para Javascript e para que seja realizado todo o linter, que fará a varredura a procura de erros de sintaxe ou de códigos que não seguem o padrão adotado _(styleguide)_. Depois de instalados os pacotes, prossiga para a configuração.
+
+> É necessário instalar tambem as respectivas extensões no vscode, acesse o menu de 'Extensions' e procure na loja por: eslint, prettier
 
 Execute o seguinte comando em seu terminal para iniciar a configuração do TypeScript:
 
@@ -65,24 +67,36 @@ Pressione `cmd + shift + p` _(mac os)_ / `ctrl + shift + p` _(windows)_ e digite
 Parametrize de acordo com abaixo:
 
 ```JSON
-"editor.formatOnSave": true,
+"eslint.workingDirectories": [
+  {
+    "mode": "auto"
+  }
+],
+"eslint.packageManager": "yarn",
+"editor.formatOnSave": false,
+"[javascript]": {
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+  }
+},
+"[javascriptreact]": {
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+  }
+},
 "[typescript]": {
-  "editor.formatOnSave": false,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+  }
 },
 "[typescriptreact]": {
-  "editor.formatOnSave": false,
-},
-"emmet.syntaxProfiles": {
-  "javascript": "jsx"
-},
-"emmet.includeLanguages": {
-  "javascript": "javascriptreact"
-},
-"editor.codeActionsOnSave": {
-  "source.fixAll.eslint": true
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+  }
 }
 ```
+
+**Neste ponto é importante que o vscode seja reiniciado, após realizado, abra algum arquivo de extensão .ts e os plugins deverão ser carregados, caso haja algum erro, monitore a aba de Output > ESLint, para verificar por problemas na inicialização**
 
 Por final, no seu `package.json` adicione os scripts que irão fazer a transpilação, para quando você estiver desenvolvendo, ou for liberar para algum servidor:
 
@@ -91,3 +105,9 @@ Por final, no seu `package.json` adicione os scripts que irão fazer a transpila
   "dev:server": "ts-node-dev --respawn --transpileOnly src/index.ts"
 }
 ```
+
+> Para executar em ambiente de desenvolvimento: `yarn dev:server`
+
+> Para fazer o build: `yarn tsc` 
+
+
