@@ -52,7 +52,7 @@ Nas configs do `husky` agora você precisa adicionar o que vai ser feito toda ve
   }
 ```
 
-E na hora de commitar, siga os [exemplos](https://commitlint.js.org/#/concepts-commit-conventions)
+E na hora de commitar vamos usar o comitizen para facilitar nossa vida.
 
 
 Para configurar o commitizen, depois de instalados os pacotes, inicie com:
