@@ -110,4 +110,12 @@ Por final, no seu `package.json` adicione os scripts que irão fazer a transpila
 
 > Para fazer o build: `yarn tsc` 
 
+Se você usa o jest na sua aplicação, adicione no arquivo `.eslint`
 
+```json
+{
+  "env": {
+    "jest": true
+  }
+}
+```
